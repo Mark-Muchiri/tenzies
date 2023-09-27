@@ -1,4 +1,4 @@
-import Tenzies from './App.js'
+import Tenzies from './components/App.js';
 
 function Home() {
   return (
