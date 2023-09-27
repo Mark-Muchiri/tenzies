@@ -1,0 +1,24 @@
+.background {
+  background-color: #0B2434;
+  font-family: 'Karla', sans-serif;
+  font-weight: 300;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  top: 20px;
+}
+
+.box {
+  background-color: #F5F5F5;
+  min-width: 85%;
+  min-height: 80%;
+  border-radius: 10px;
+}
+
+.title {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  color: #2B283A;
+}

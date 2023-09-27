@@ -1,13 +1,12 @@
-* {
-  box-sizing: border-box;
+html, body  {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
 }
 
-body {
-  margin: 0;
-  background-color: #0b2434;
-  font-family: Helvetica, Arial, sans-serif;
-  font-family: 'Karla', sans-serif;
-  font-weight: 300;
-  text-align: center;
-  color: white;
+* {
+  box-sizing: border-box;
 }
