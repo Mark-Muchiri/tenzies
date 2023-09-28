@@ -1,7 +1,7 @@
 import './globals.css'
 import { Karla } from 'next/font/google'
 
-const karla = Karla({ subsets: ['latin'] })
+const karla = Karla({ subsets: ['latin', 'latin-ext'] })
 
 export const metadata = {
   title: 'Tenzies App',

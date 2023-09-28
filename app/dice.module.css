@@ -1,0 +1,29 @@
+/* main.grid {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr); 
+  grid-template-rows: 1fr 1fr;
+} */
+
+div.cube {
+  width: 60px;
+  height: 60px;
+  border-radius: 10px;
+  background: #FFF;
+  box-shadow: 0px 4px 5px 0px rgba(0, 0, 0, 0.15);
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  margin: 0 auto;
+  margin-bottom: 18px;
+}
+
+p.value {
+  position: relative;
+  top: -5px;
+  color: #2B283A;
+  text-align: center;
+  font-family: Karla;
+  font-size: 21px;
+  font-weight: 700;
+}

@@ -1,4 +1,4 @@
-.background {
+main.background {
   background-color: #0B2434;
   font-family: 'Karla', sans-serif;
   font-weight: 300;
@@ -6,19 +6,82 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  top: 20px;
+  padding: 20px;
 }
 
-.box {
-  background-color: #F5F5F5;
-  min-width: 85%;
-  min-height: 80%;
+div.box {
+  position: relative;
+  background-color: #e4e4e4;
+  min-width: 90%;
+  height: 440px;
   border-radius: 10px;
+  padding: 20px;
+  top: -8px;
 }
 
-.title {
+h2.title {
+  position: relative;
   display: flex;
   justify-content: center;
   align-content: center;
   color: #2B283A;
+  text-align: center;
+  font-family: Karla;
+  font-size: 33px;
+  font-weight: 700;
+  padding: 0;
+  margin: 0 auto;
+  margin-top: 0.5rem;
+}
+
+p.subs {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 320px;
+  color: #4A4E74;
+  text-align: center;
+  font-family: Inter;
+  font-size: 18px;
+  font-weight: 400;
+  letter-spacing: -0.393px;
+  margin: 0 auto;
+  margin-top: 5px;
+}
+
+div.Dicegrid {
+  margin-top: 1.5rem;
+  margin-left: 0.3rem;
+  margin-right: 0.3rem;
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-template-rows: 1fr 1fr;
+}
+
+button.Roll {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  margin: 0 auto;
+  width: 120px;
+  height: 50px;
+  border-radius: 7px;
+  background: #5035FF;
+  margin-top: 1rem;
+  box-shadow: 0px 8px 15px 00px rgba(0, 0, 0, 0.372);
+}
+
+p.bttext {
+  color: white;
+  text-align: center;
+  position: relative;
+  top: -10px;
+  font-family: Karla;
+  font-size: 21px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
 }
