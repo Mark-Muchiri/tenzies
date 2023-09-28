@@ -16,7 +16,7 @@ div.box {
   height: 440px;
   border-radius: 10px;
   padding: 20px;
-  top: -8px;
+  top: -20px;
 }
 
 h2.title {
@@ -31,7 +31,7 @@ h2.title {
   font-weight: 700;
   padding: 0;
   margin: 0 auto;
-  margin-top: 0.5rem;
+  margin-top: 0.3rem;
 }
 
 p.subs {
@@ -74,7 +74,7 @@ button.Roll {
   box-shadow: 0px 8px 15px 00px rgba(0, 0, 0, 0.372);
 }
 
-p.bttext {
+p.btText {
   color: white;
   text-align: center;
   position: relative;

@@ -7,6 +7,29 @@ const inter = Inter({ subsets: [ 'latin' ] });
 
 function Home() {
 
+  /**
+   * Challenge:
+   * 
+   * Write a function (allNewDice) that returns an array 
+   * of 10 random numbers between 1-6 inclusive.
+   * 
+   * Log the array of numbers to the console for now
+   */
+
+  function generateRandomNumbersArray() {
+    const randomNumbers = [];
+    for (let i = 0; i < 10; i++) {
+      const randomNumber = Math.floor(Math.random() * 6) + 1;
+      randomNumbers.push(randomNumber);
+    }
+    return randomNumbers;
+  }
+
+  // Usage: Generate an array of 10 random numbers between 1 and 6
+  const randomNumbersArray = generateRandomNumbersArray();
+  console.log(randomNumbersArray);
+
+
   const numbers = digits.map((digit) => {
     return <Dice key={digit} value={digit} />;
   });
@@ -26,7 +49,7 @@ function Home() {
           </div>
           {/* This 👇 is a button */}
           <button className={styles.Roll}>
-            <p className={styles.bttext}>
+            <p className={styles.btText}>
               Roll
             </p>
           </button>
