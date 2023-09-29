@@ -16,19 +16,17 @@ function Home() {
    * Log the array of numbers to the console for now
    */
 
-  function generateRandomNumbersArray() {
+  function allNewDice() {
     const randomNumbers = [];
     for (let i = 0; i < 10; i++) {
-      const randomNumber = Math.floor(Math.random() * 6) + 1;
+      const randomNumber = Math.floor(Math.random() * 7);
       randomNumbers.push(randomNumber);
     }
     return randomNumbers;
   }
-
   // Usage: Generate an array of 10 random numbers between 1 and 6
-  const randomNumbersArray = generateRandomNumbersArray();
-  console.log(randomNumbersArray);
-
+  const dice = allNewDice();
+  console.log(allNewDice());
 
   const numbers = digits.map((digit) => {
     return <Dice key={digit} value={digit} />;
