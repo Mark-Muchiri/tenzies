@@ -19,7 +19,7 @@ function Home() {
   function allNewDice() {
     const randomNumbers = [];
     for (let i = 0; i < 10; i++) {
-      const randomNumber = Math.floor(Math.random() * 7);
+      const randomNumber = Math.ceil(Math.random() * 6);
       randomNumbers.push(randomNumber);
     }
     return randomNumbers;
@@ -47,7 +47,7 @@ function Home() {
           </div>
           {/* This 👇 is a button */}
           <button className={styles.Roll}>
-            <p className={styles.btText}>
+            <p className={styles.RollText}>
               Roll
             </p>
           </button>
