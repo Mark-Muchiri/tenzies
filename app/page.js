@@ -5,35 +5,31 @@ import Dice from "./dice.js";
 
 function Home() {
 	/**
-	 * Challenge:
+	 * Challenge: Create a `Roll Dice` button that will re-roll
+	 * all 10 dice
 	 *
-	 * Create state to hold our array of numbers. (Initialize
-	 * the state by calling our `allNewDice` function so it
-	 * loads all new dice as soon as the app loads)
-	 *
-	 * Map over the state numbers array to generate our array
-	 * of Die elements and render those in place of our
-	 * manually-written 10 Die elements.
+	 * Clicking the button should generate a new array of numbers
+	 * and set the `dice` state to that new array (thus re-rendering
+	 * the array to the page)
 	 */
 
-	// Initialize the component state with the initial dice values
-	const [dice, setDice] = useState("" || []);
+	// Initialize the component state with a the `allNewDice`
+	const [dice, setDice] = useState(allNewDice());
 
-	// useEffect to handle client-side logic (executes after initial render)
-	useEffect(() => {
-		// This logic is only executed on the client side
-		function allNewDice() {
-			const newDice = [];
-			for (let i = 0; i < 10; i++) {
-				const randomNumber = Math.ceil(Math.random() * 6);
-				newDice.push(randomNumber);
-			}
-			return newDice;
+	// This logic is only executed on the client side
+	function allNewDice() {
+		const newDice = [];
+		for (let i = 0; i < 10; i++) {
+			const randomNumber = Math.ceil(Math.random() * 6);
+			newDice.push(randomNumber);
 		}
+		return newDice;
+	}
 
+	function rollDice() {
 		// Generate new random numbers for dice and update the state
 		setDice(allNewDice());
-	}, []); // Empty dependency array means this effect runs once after initial render
+	}
 
 	// Map the dice values to Dice components
 	const numbers = dice.map((digit, index) => {
@@ -50,7 +46,7 @@ function Home() {
 						freeze it at its current value between rolls.
 					</p>
 					<div className={styles.Dicegrid}>{numbers}</div>
-					<button className={styles.Roll}>
+					<button className={styles.Roll} onClick={rollDice}>
 						<p className={styles.RollText}>Roll</p>
 					</button>
 				</div>
