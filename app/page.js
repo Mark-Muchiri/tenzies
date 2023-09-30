@@ -3,26 +3,37 @@ import { useState, useEffect } from "react";
 import styles from "./page.module.css";
 import Dice from "./dice.js";
 
-function Home() {
+function Home({ initialValue }) {
 	/**
-	 * Challenge: Create a `Roll Dice` button that will re-roll
-	 * all 10 dice
+	 * Challenge: Update the array of numbers in state to be
+	 * an array of objects instead. Each object should look like:
+	 * { value: <random number>, isHeld: false }
 	 *
-	 * Clicking the button should generate a new array of numbers
-	 * and set the `dice` state to that new array (thus re-rendering
-	 * the array to the page)
+	 * Making this change will break parts of our code, so make
+	 * sure to update things so we're back to a working state
 	 */
 
 	// Initialize the component state with a the `allNewDice`
-	const [dice, setDice] = useState(allNewDice());
+	const [dice, setDice] = useState(initialDice() || initialValue);
+
+	// This logic is used to  provide initial load values of the dice
+	function initialDice() {
+		const newDice = [];
+		for (let i = 0; i < 10; i++) {
+			const randomNumber = Math.ceil(Math.random() * 6);
+			newDice.push({ value: randomNumber, isHeld: false });
+		}
+		return newDice;
+	}
 
 	// This logic is only executed on the client side
 	function allNewDice() {
 		const newDice = [];
 		for (let i = 0; i < 10; i++) {
 			const randomNumber = Math.ceil(Math.random() * 6);
-			newDice.push(randomNumber);
+			newDice.push({ value: randomNumber, isHeld: false });
 		}
+		console.log(newDice);
 		return newDice;
 	}
 
@@ -33,7 +44,7 @@ function Home() {
 
 	// Map the dice values to Dice components
 	const numbers = dice.map((digit, index) => {
-		return <Dice key={index} value={digit} />;
+		return <Dice key={index} value={digit.value} />;
 	});
 
 	return (
