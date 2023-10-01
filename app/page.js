@@ -16,13 +16,16 @@ function Home({ initialValue }) {
 
 	// Initialize the component state with a the `allNewDice`
 	const [dice, setDice] = useState(initialDice() || initialValue);
-
 	// This logic is used to  provide initial load values of the dice
 	function initialDice() {
 		const newDice = [];
 		for (let i = 0; i < 10; i++) {
 			const randomNumber = Math.ceil(Math.random() * 6);
-			newDice.push({ value: randomNumber, isHeld: false });
+			newDice.push({
+				id: nanoid,
+				value: randomNumber,
+				isHeld: false,
+			});
 		}
 		return newDice;
 	}
@@ -33,15 +36,15 @@ function Home({ initialValue }) {
 		for (let i = 0; i < 10; i++) {
 			const randomNumber = Math.ceil(Math.random() * 6);
 			newDice.push({
-				id: nanoid,
+				id: nanoid(),
 				value: randomNumber,
 				isHeld: false,
 			});
 		}
-		console.log(newDice);
 		return newDice;
 	}
 
+	// Roll dice button click function
 	function rollDice() {
 		// Generate new random numbers for dice and update the state
 		setDice(allNewDice());
@@ -49,7 +52,7 @@ function Home({ initialValue }) {
 
 	// Map the dice values to Dice components
 	const numbers = dice.map((digit, index) => {
-		return <Dice key={index} value={digit.value} />;
+		return <Dice key={index} value={digit.value} isHeld={digit.isHeld} />;
 	});
 
 	return (
