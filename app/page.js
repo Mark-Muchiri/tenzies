@@ -1,4 +1,5 @@
 "use client";
+import { nanoid } from "nanoid";
 import { useState, useEffect } from "react";
 import styles from "./page.module.css";
 import Dice from "./dice.js";
@@ -31,7 +32,11 @@ function Home({ initialValue }) {
 		const newDice = [];
 		for (let i = 0; i < 10; i++) {
 			const randomNumber = Math.ceil(Math.random() * 6);
-			newDice.push({ value: randomNumber, isHeld: false });
+			newDice.push({
+				id: nanoid,
+				value: randomNumber,
+				isHeld: false,
+			});
 		}
 		console.log(newDice);
 		return newDice;
