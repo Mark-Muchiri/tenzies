@@ -8,6 +8,7 @@ function Dice(props) {
     <section>
       <main className={dice.grid}>
         <div
+          onClick={props.toggle}
           className={dice.cube}
           style={styles}
         >

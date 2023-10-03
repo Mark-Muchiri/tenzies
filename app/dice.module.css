@@ -11,6 +11,10 @@ div.cube {
   margin-bottom: 18px;
 }
 
+div.cube:hover{
+  cursor: pointer;
+}
+
 p.value {
   position: relative;
   top: -5px;

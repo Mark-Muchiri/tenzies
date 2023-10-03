@@ -5,21 +5,8 @@ import styles from "./page.module.css";
 import Dice from "./dice.js";
 
 function Home({ initialValue }) {
-	/**
-	 * Challenge: Create a function `holdDice` that takes
-	 * `id` as a parameter. For now, just have the function
-	 * console.log(id).
-	 * 
-	 * Then, figure out how to pass that function down to each
-	 * instance of the Die component so when each one is clicked,
-	 * it logs its own unique ID property. (Hint: there's more
-	 * than one way to make that work, so just choose whichever
-	 * you want)
-	 * 
-	 */
-
 	// Initialize the component state with a the `allNewDice`
-	const [ dice, setDice ] = useState(initialDice() || initialValue);
+	const [dice, setDice] = useState(allNewDice() || initialValue);
 	// This logic is used to  provide initial load values of the dice
 	function initialDice() {
 		const newDice = [];
@@ -47,6 +34,26 @@ function Home({ initialValue }) {
 		}
 		return newDice;
 	}
+	/**
+	 * Challenge: Create a function `holdDice` that takes
+	 * `id` as a parameter. For now, just have the function
+	 * console.log(id).
+	 *
+	 * Then, figure out how to pass that function down to each
+	 * instance of the Die component so when each one is clicked,
+	 * it logs its own unique ID property. (Hint: there's more
+	 * than one way to make that work, so just choose whichever
+	 * you want)
+	 *
+	 */
+
+	function holdDice(id) {
+		setDice((prevDice) =>
+			prevDice.map((box) =>
+				box.id === id ? { ...box, isHeld: !box.isHeld } : box
+			)
+		);
+	}
 
 	// Roll dice button click function
 	function rollDice() {
@@ -61,6 +68,7 @@ function Home({ initialValue }) {
 				key={index}
 				value={digit.value}
 				isHeld={digit.isHeld}
+				toggle={() => holdDice(digit.id)}
 			/>
 		);
 	});
