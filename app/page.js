@@ -7,6 +7,17 @@ import Dice from "./dice.js";
 function Home() {
 	// Initialize the component state with a the `allNewDice`
 	const [ dice, setDice ] = useState(allNewDice());
+	const [ tenzies, setTenzies ] = useState(false);
+	/**
+ * Challenge:
+ * 1. Add new state called `tenzies`, default to false. It
+ *    represents whether the user has won the game yet or not.
+ * 2. Add an effect that runs every time the `dice` state array 
+ *    changes. For now, just console.log("Dice state changed").
+ */
+	useEffect(() => {
+		console.log("Dice state changed");
+	}, [ dice ]);
 
 	function generateNewDie() {
 		return {
@@ -33,15 +44,6 @@ function Home() {
 		);
 	}
 
-	/**
-	 * Challenge: Update the `rollDice` function to not just roll
-	 * all new dice, but instead to look through the existing dice
-	 * to NOT role any that are being `held`.
-	 *
-	 * Hint: this will look relatively similiar to the `holdDice`
-	 * function below. When creating new dice, remember to use
-	 * `id: nanoid()` so any new dice have an `id` as well.
-	 */
 	// Roll dice button click function
 	function rollDice() {
 		// Generate new random numbers for dice and update the state
