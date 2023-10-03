@@ -15,7 +15,7 @@ function Home({ initialValue }) {
 	 */
 
 	// Initialize the component state with a the `allNewDice`
-	const [dice, setDice] = useState(initialDice() || initialValue);
+	const [ dice, setDice ] = useState(initialDice() || initialValue);
 	// This logic is used to  provide initial load values of the dice
 	function initialDice() {
 		const newDice = [];
@@ -52,7 +52,13 @@ function Home({ initialValue }) {
 
 	// Map the dice values to Dice components
 	const numbers = dice.map((digit, index) => {
-		return <Dice key={index} value={digit.value} isHeld={digit.isHeld} />;
+		return (
+			<Dice
+				key={index}
+				value={digit.value}
+				isHeld={digit.isHeld}
+			/>
+		);
 	});
 
 	return (
