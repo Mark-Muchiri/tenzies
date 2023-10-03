@@ -34,17 +34,15 @@ function Home({ initialValue }) {
 		}
 		return newDice;
 	}
+
 	/**
-	 * Challenge: Create a function `holdDice` that takes
-	 * `id` as a parameter. For now, just have the function
-	 * console.log(id).
+	 * Challenge: Update the `rollDice` function to not just roll
+	 * all new dice, but instead to look through the existing dice
+	 * to NOT role any that are being `held`.
 	 *
-	 * Then, figure out how to pass that function down to each
-	 * instance of the Die component so when each one is clicked,
-	 * it logs its own unique ID property. (Hint: there's more
-	 * than one way to make that work, so just choose whichever
-	 * you want)
-	 *
+	 * Hint: this will look relatively similiar to the `holdDice`
+	 * function below. When creating new dice, remember to use
+	 * `id: nanoid()` so any new dice have an `id` as well.
 	 */
 
 	function holdDice(id) {
