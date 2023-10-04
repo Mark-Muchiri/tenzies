@@ -1,31 +1,33 @@
 "use client";
 import { nanoid } from "nanoid";
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
 import styles from "./page.module.css";
 import Dice from "./dice.js";
 
 function Home() {
 	// Initialize the component state with a the `allNewDice`
-	const [ dice, setDice ] = useState(allNewDice());
-	const [ tenzies, setTenzies ] = useState(false);
+	const [dice, setDice] = useState(allNewDice());
+	const [tenzies, setTenzies] = useState(false);
 	/**
-	 * Challenge: Check the dice array for these winning conditions:
-	 * 1. All dice are held, and
-	 * 2. all dice have the same value
-	 * 
-	 * If both conditions are true, set `tenzies` to true and log
-	 * "You won!" to the console
+	 * Challenge: Tie off loose ends!
+	 * 1. If tenzies is true, Change the button text to "New Game"
+	 * 2. If tenzies is true, use the "react-confetti" package to
+	 *    render the <Confetti /> component 🎉
+	 *
+	 *    Hint: don't worry about the `height` and `width` props
+	 *    it mentions in the documentation.
 	 */
 	useEffect(() => {
 		const allDiceHeld = dice.every((die) => die.isHeld);
 		const sameValue = dice.every((die) => {
-			return die.value === dice[ 0 ].value;
+			return die.value === dice[0].value;
 		});
 
 		if (allDiceHeld && sameValue) {
-			console.log('Congratulations! You won!');
+			setTenzies(true);
+			console.log("Congratulations! You won!");
 		}
-	}, [ dice ]);
+	}, [dice]);
 
 	function generateNewDie() {
 		return {
@@ -85,11 +87,10 @@ function Home() {
 						freeze it at its current value between rolls.
 					</p>
 					<div className={styles.Dicegrid}>{numbers}</div>
-					<button
-						onClick={rollDice}
-						className={styles.Roll}
-					>
-						<p className={styles.RollText}>Roll</p>
+					<button onClick={rollDice} className={styles.Roll}>
+						<p className={styles.RollText}>
+							{tenzies === true ? "New Game" : "Roll"}
+						</p>
 					</button>
 				</div>
 			</main>
