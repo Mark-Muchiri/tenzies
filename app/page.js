@@ -3,20 +3,30 @@ import { nanoid } from "nanoid";
 import { useEffect, useState } from "react";
 import styles from "./page.module.css";
 import Dice from "./dice.js";
+import Confetti from "react-confetti";
 
 function Home() {
 	// Initialize the component state with a the `allNewDice`
 	const [dice, setDice] = useState(allNewDice());
 	const [tenzies, setTenzies] = useState(false);
-	/**
-	 * Challenge: Tie off loose ends!
-	 * 1. If tenzies is true, Change the button text to "New Game"
-	 * 2. If tenzies is true, use the "react-confetti" package to
-	 *    render the <Confetti /> component 🎉
-	 *
-	 *    Hint: don't worry about the `height` and `width` props
-	 *    it mentions in the documentation.
-	 */
+	// Roll button styles.
+	// (Needs to access `tenzies 1st for it to execute` )
+	const RollButton = {
+		buttonRoll: {
+			position: "relative",
+			display: "flex",
+			justifyContent: "center",
+			alignContent: "center",
+			margin: "0 auto",
+			width: "150px",
+			height: "50px",
+			borderRadius: "7px",
+			background: "#5035FF",
+			marginTop: "1rem",
+			boxShadow: "0px 8px 15px 0px rgba(0, 0, 0, 0.372)",
+		},
+	};
+
 	useEffect(() => {
 		const allDiceHeld = dice.every((die) => die.isHeld);
 		const sameValue = dice.every((die) => {
@@ -56,13 +66,21 @@ function Home() {
 
 	// Roll dice button click function
 	function rollDice() {
-		// Generate new random numbers for dice and update the state
-		// Also holds the the truthy for `isHeld`
-		setDice((oldDice) =>
-			oldDice.map((die) => {
-				return die.isHeld ? die : generateNewDie();
-			})
-		);
+		// Condition checks if tenzies is false.
+		// If it's false the came continues, till it's true
+		// If it's true it rendered the `else`
+		if (tenzies === false) {
+			// Generate new random numbers for dice and update the state
+			// Also holds the the truthy for `isHeld`
+			setDice((oldDice) =>
+				oldDice.map((die) => {
+					return die.isHeld ? die : generateNewDie();
+				})
+			);
+		} else {
+			setTenzies(false);
+			setDice(allNewDice());
+		}
 	}
 
 	// Map the dice values to Dice components
@@ -78,23 +96,22 @@ function Home() {
 	});
 
 	return (
-		<section>
-			<main className={styles.background}>
-				<div className={styles.box}>
-					<h2 className={styles.title}>Tenzies</h2>
-					<p className={styles.subs}>
-						Roll until all dice are the same. Click each die to
-						freeze it at its current value between rolls.
+		<main className={styles.background}>
+			{tenzies === true ? <Confetti /> : <div></div>}
+			<div className={styles.box}>
+				<h2 className={styles.title}>Tenzies</h2>
+				<p className={styles.subs}>
+					Roll until all dice are the same. Click each die to freeze
+					it at its current value between rolls.
+				</p>
+				<div className={styles.Dicegrid}>{numbers}</div>
+				<button onClick={rollDice} style={RollButton.buttonRoll}>
+					<p className={styles.RollText}>
+						{tenzies === true ? "New Game" : "Roll"}
 					</p>
-					<div className={styles.Dicegrid}>{numbers}</div>
-					<button onClick={rollDice} className={styles.Roll}>
-						<p className={styles.RollText}>
-							{tenzies === true ? "New Game" : "Roll"}
-						</p>
-					</button>
-				</div>
-			</main>
-		</section>
+				</button>
+			</div>
+		</main>
 	);
 }
 export default Home;
