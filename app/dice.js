@@ -12,7 +12,9 @@ function Dice(props) {
 					className={dice.cube}
 					style={styles}
 				>
-					<p className={dice.value}>{props.value}</p>
+					<p className={dice.value}>
+						{props.value}
+					</p>
 				</div>
 			</main>
 		</section>
