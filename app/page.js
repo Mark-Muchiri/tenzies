@@ -35,7 +35,6 @@ function Home() {
 
 		if (allDiceHeld && sameValue) {
 			setTenzies(true);
-			console.log("Congratulations! You won!");
 		}
 	}, [dice]);
 
